@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+  <link rel="stylesheet" href="css/toggle.css">
+
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="cryptonite">
+      <img src="img/logo.gif" alt="" width="180px">
+    </div>
+    <!-- navbar--> 
+    <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="nav-content">   
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Live Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+
+
+    <!--body-->
+    <section>
+      <ul class="row list-inline mx-auto" id="table">
+        <!--
+        <li class="card col-3 list-inline-item mt-1">
+          <div class="card-body">
+            <h5 class="card-title" id="letters">ILS</h5>
+
+            <span>
+             <div class="col-sm-5 togglerBtn">
+              <button type="button" class="btn btn-xs btn-info btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                <div class="handle"></div>
+              </button>
+            </div>
+          </span>
+
+          <p class="card-text">Israeli Shekle</p>
+
+          <button data-toggle="collapse" data-target="#demo" class="btn btn-primary btn-sm">See More</button>
+
+          <div id="demo" class="collapse">
+            <img src="" width="50px">
+            <ul>
+              <li id="USD" class="price">$100</li>
+              <li id="EUR" class="price">#100</li>
+              <li id="ILS" class="price">sk100</li>
+            </ul>
+
+          </div> 
+        </div>
+      </li> -->
+
+
+
+
+    </ul>
+  </section>
+</div>
+<input onclick="ajaxGetter()" type="button" value="button" id="btn1"/>
+<div id="d2"></div>
+<div id="d3"></div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
