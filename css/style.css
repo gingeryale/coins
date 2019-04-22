@@ -1,4 +1,4 @@
-.cryptonite{
+.cryptoniteLogo{
 	border-bottom:1px solid #333311;
 }
 
@@ -9,4 +9,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.active{
+	font-weight: bold;
 }

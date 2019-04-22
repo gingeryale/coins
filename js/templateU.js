@@ -50,7 +50,7 @@ var $promise = $.ajax({
 
 
 function seeMore(idx) { 
-    var url2 = `https://api.coingecko.com/api/v3/coins/${idx}`;
+    let url2 = `https://api.coingecko.com/api/v3/coins/${idx}`;
     $.get(url2, function (json) {
                 arr = JSON.parse(JSON.stringify(json));
                  //$.each(arr, function(i, e) {
@@ -66,7 +66,7 @@ function seeMore(idx) {
                     </ul>
                     `;
 
-                   var dataB = document.getElementsByClassName(arr.symbol);
+                   let dataB = document.getElementsByClassName(arr.symbol);
                   $(dataB).empty().append(details);
                   //$('.show').toggleClass('show');
 
@@ -76,4 +76,4 @@ function seeMore(idx) {
         };
 
 
-        var selectedCoins = [];
+        let selectedCoins = [];
