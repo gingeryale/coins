@@ -27,7 +27,7 @@
       <div class="collapse navbar-collapse" id="nav-content">   
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link home" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Live Reports</a>
@@ -43,10 +43,9 @@
       </form>
     </nav>
 
-
+    <div id="loadingDiv"><img src="ajax-loader.gif" /></div>  
     <!--body-->
     <section>
-        <div class="dataCall"></div>
       <ul class="row list-inline mx-auto" id="table">
         <!--
         <li class="card col-3 list-inline-item mt-1">
@@ -88,11 +87,8 @@
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/templates.js"></script>
 <script src="js/templateA.js"></script>
-<!-- <script>
-$(document).ready(function() {
-    $('#some-menu').load('some-local-path/menu.html');
-});
-</script> -->
+
 </body>
 </html>

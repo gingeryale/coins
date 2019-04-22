@@ -1,6 +1,6 @@
 var data;
 var url = 'https://api.coingecko.com/api/v3/coins/list';
-$('#loadingDiv').show();
+
 var $promise = $.ajax({
     url: url,
     dataType: 'json',
@@ -9,8 +9,7 @@ var $promise = $.ajax({
     success: function (response, status) {
         var arr = JSON.parse(JSON.stringify(response));
         arr.length=27;
-        $('#loadingDiv').hide();
-
+        
         $.each(arr, function(i, e) {
             list=`<li class="card col-3 list-inline-item mt-1">
             <div class="card-body">
@@ -36,8 +35,7 @@ var $promise = $.ajax({
         </li>`;
         $("#table").append(list);
         });
-       
-
+      
         
        
     },
