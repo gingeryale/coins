@@ -14,7 +14,7 @@ $('document').ready(function () {
       });
 
     
-    $('.home').on('click', function () {     
+    $('.home, .cryptoniteLogo').on('click', function () {     
         $('.reports').removeClass('active');
         $('.about').removeClass('active');  
         $('.home').addClass('active'); 
