@@ -77,3 +77,13 @@ function seeMore(idx) {
 
 
         var selectedCoins = [];
+
+        // $("input[name='tech']").change(function(){
+        //   var maxAllowed = 2;
+        //   var count = $("input[name='tech']:checked").length;
+        // if(count > maxAllowed){
+        // $(this).prop("checked", "");
+        // alert("reached max "+ maxAllowed);
+        // }
+        
+        // });
