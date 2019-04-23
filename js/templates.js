@@ -46,4 +46,9 @@ $('document').ready(function () {
       }
       });
 
+
+      $('.checkboxer').on('click', function () { 
+        $.getScript('js/templateU.js');
+      });
+
   });

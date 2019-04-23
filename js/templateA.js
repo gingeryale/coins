@@ -20,7 +20,7 @@ var $promise = $.ajax({
     
             <span>
              <div class="col-sm-5 togglerBtn">
-              <button type="button" class="btn btn-xs btn-primary btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+              <button type="button" class="btn btn-xs btn-primary btn-toggle checkboxer" data-toggle="button" aria-pressed="false" autocomplete="off">
                 <div class="handle"></div>
               </button>
             </div>
@@ -45,6 +45,7 @@ var $promise = $.ajax({
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
         console.log('AJAX error:' + textStatus);
+        $("#table").empty().html('<h3>Error: A server error occurred.</h3>');
     }
 });
 
@@ -76,14 +77,6 @@ function seeMore(idx) {
         };
 
 
-        var selectedCoins = [];
+       
 
-        // $("input[name='tech']").change(function(){
-        //   var maxAllowed = 2;
-        //   var count = $("input[name='tech']:checked").length;
-        // if(count > maxAllowed){
-        // $(this).prop("checked", "");
-        // alert("reached max "+ maxAllowed);
-        // }
         
-        // });

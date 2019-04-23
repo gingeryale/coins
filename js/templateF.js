@@ -52,13 +52,13 @@ var $promise = $.ajax({
           $("#table").empty().append(list);
           $('.inputField').val("");
             } else {
-              $("#table").empty().html('<h3>Error: Could not find coin with the given id. Please try again.</h1>');
+              $("#table").empty().html('<h3>Error: Could not find coin with the given id.</h3>');
             }
         });
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
         console.log('AJAX error:' + textStatus);
-        $("#table").empty().html('<h3>Error: A server error occurred. Please try again.</h1>');
+        $("#table").empty().html('<h3>Error: A server error occurred.</h3>');
 
     }
 });
