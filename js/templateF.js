@@ -1,3 +1,4 @@
+// $.getScript('js/templateU.js');
 var searchData;
 var idx = $('.inputField').val();
 $('#loadingDiv').show();

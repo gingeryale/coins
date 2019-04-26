@@ -43,6 +43,7 @@
     </nav>
 
     <div id="loadingDiv"><img src="ajax-loader.gif" /></div>  
+    <div id="dialog" title="Basic dialog"></div>
     <!--body-->
     <section>
       <ul class="row list-inline mx-auto" id="table">
@@ -79,6 +80,33 @@
 
 
     </ul>
+
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">You've selected more than 5 coins!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <p>Do you want to remove any on this list?</p>
+          <div class="modal-body" id="arrayResults">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+
+
   </section>
 </div>
 
@@ -88,6 +116,9 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/templates.js"></script>
 <script src="js/templateA.js"></script>
+<script src="js/templateU.js"></script>
+
+
 
 </body>
 </html>

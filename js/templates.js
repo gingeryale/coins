@@ -47,7 +47,7 @@ $('document').ready(function () {
       });
 
 
-      $('.checkboxer').on('click', function () { 
+      $("input[name='coins']").click(function () { 
         $.getScript('js/templateU.js');
       });
 

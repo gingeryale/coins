@@ -1,3 +1,4 @@
+$.getScript('js/templateU.js');
 var data;
 var url = 'https://api.coingecko.com/api/v3/coins/list';
 $('#loadingDiv').show();
@@ -19,10 +20,9 @@ var $promise = $.ajax({
             <h5 class="card-title" id="letters">${e.symbol}</h5>
     
             <span>
-             <div class="col-sm-5 togglerBtn">
-              <button type="button" class="btn btn-xs btn-primary btn-toggle checkboxer" data-toggle="button" aria-pressed="false" autocomplete="off">
-                <div class="handle"></div>
-              </button>
+             <div class="col-sm-5 togglerBtn form">
+             <!--<label><input onclick="buildArr('${e.symbol}')" id="${e.symbol}" type="checkbox" class="ios-switch tinyswitch" name="coins" value="${e.symbol}" /><div><div></div></div></label>-->
+             <label><input onclick="addCoin()" id="${e.symbol}" type="checkbox" class="ios-switch tinyswitch" name="coins" value="${e.symbol}" /><div><div></div></div></label>
             </div>
           </span>
         
@@ -50,6 +50,7 @@ var $promise = $.ajax({
 });
 
 
+
 function seeMore(idx) { 
     var url2 = `https://api.coingecko.com/api/v3/coins/${idx}`;
     $.get(url2, function (json) {
@@ -72,11 +73,41 @@ function seeMore(idx) {
                   //$('.show').toggleClass('show');
 
                  //});
-               
+                 // place into local storage
             });
         };
 
-
+      
        
+var selection = [];
+// function checkedBox(){
+//   $('input[type="checkbox"]').change(function() {
+//     let $box=$(this);
+//     if ($box.is(":checked")){
+//           console.log("The element with id " + this.value + " changed.");
+//           selection.push(this.value);
+//     }
+//     console.log(selection);
+// });
+// }
 
-        
+   
+    //     function checkedBox() {
+    //       let chb = document.getElementsByClassName('input[type="checkbox"]');
+    //       for(let i=0; i<chb.length;i++){
+    //         if(chb.checked){
+    //         console.log(this)
+    //         }
+    //   }
+    // }
+
+
+    // sessionStorage.boxes = [];
+    // let boxes = document.getElementsByTagName('input[type="checkbox"]');// array of elements
+    // for(let i=0; i<boxes.length;i++){
+		// 	if(boxes.checked){
+		// 	boxes.push(this);
+		// 	}
+    // }
+    
+
