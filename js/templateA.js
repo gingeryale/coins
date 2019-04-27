@@ -22,7 +22,7 @@ var $promise = $.ajax({
             <span>
              <div class="col-sm-5 togglerBtn form">
              <!--<label><input onclick="buildArr('${e.symbol}')" id="${e.symbol}" type="checkbox" class="ios-switch tinyswitch" name="coins" value="${e.symbol}" /><div><div></div></div></label>-->
-             <label><input onclick="addCoin()" id="${e.symbol}" type="checkbox" class="ios-switch tinyswitch" name="coins" value="${e.symbol}" /><div><div></div></div></label>
+             <label><input onclick="addCoin()" id="${e.symbol}" data-target="${e.symbol}" type="checkbox" class="ios-switch tinyswitch" name="coins" value="${e.symbol}" /><div><div></div></div></label>
             </div>
           </span>
         
