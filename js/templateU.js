@@ -21,11 +21,11 @@ function addCoin(){
     // start with empty array
     var selection = [];
     $('#table').find(boxer).each(function () {
-      if(selection.length < 5){
+      if(selection.length < 2){
         selection.push(this.id);
       }else{
         
-        arrayRunner(selection);
+        arrayRunner();
       }  
     });
     /*prints after list is populated*/
@@ -36,14 +36,51 @@ function addCoin(){
 // /*binds run function to click of submit*/
 // $('#submit').click(run);
 // console.log(selection);
-function arrayRunner(selection){
+function arrayRunner(){
   $("#arrayResults").empty();
   $('#exampleModalCenter').modal('show');
-  for(let i = 0; i < selection.length; i++){
-      let arr = `<li>${selection[i]}<button class="del">x</button></li>`
-      $("#arrayResults").append(arr);
-  }
+  // for(let i = 0; i < selection.length; i++){
+  //     let arr = `<li>${selection[i]}<button class="del">x</button></li>`
+  //     $("#arrayResults").append(arr);
+  // }
+
+  // $('#table').find(boxer).each(function (el) {
+  //   let arr = `<li>${el.value}<button class="del">x</button></li>`
+  //     $("#arrayResults").append(arr);
+  // });
+
+  $("input[name='coins']:checked").each(function () {
+    //console.log($(this).val());
+    let arr = `<li>${$(this).val()}<button data-coin="${$(this).val()}" class="del">x</button></li>`
+       $("#arrayResults").append(arr);
+       console.log(arr);
+});
+// delete from checked selection
+  // $('.del').click(function(){
+  //   console.log(this);
+  //   console.log($(this));
+  // });
+  deleteOnefromModal();
 }
+
+// let user remove from the list of 5 selected coins
+function deleteOnefromModal(){
+  $(".del").attr("data-name","coin").click(function(){
+    let userSelectedCoin = $(this).data('coin')
+    $(this).closest('li').remove();
+    removeFromSelectionArray(userSelectedCoin);
+  });
+}
+
+function removeFromSelectionArray(userSelectedCoin){
+ console.log(self);
+ if($.inArray("self", selection) !== -1){
+  selection.splice(i, 1);
+  console.log(selection);
+ }
+ 
+}
+
 
 
           //   function buildArr(id) {
@@ -64,12 +101,4 @@ function arrayRunner(selection){
 
 
 
-          var cbobject= document.getElementsByTagName("input[name='coins']:checked");
-for (var i=0, len=cbobject.length; i<len; i++) {
-        if ( cbobject[i].type === 'checkbox' ) {
-            cbobject[i].onclick = show_alert;
-        }
-    }
-function show_alert(e){
-    alert("checkbox!!!")
-}
+          
