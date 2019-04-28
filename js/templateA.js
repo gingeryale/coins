@@ -11,11 +11,11 @@ var $promise = $.ajax({
     data: data,
     success: function (response, status) {
         var arr = JSON.parse(JSON.stringify(response));
-        arr.length=10;
+        arr.length=30;
         $('#loadingDiv').hide();
 
         $.each(arr, function(i, e) {
-            list=`<li class="card col-3 list-inline-item mt-1">
+            list=`<li class="card list-inline-item mt-1 col-md-3">
             <div class="card-body">
             <h5 class="card-title" id="letters">${e.symbol}</h5>
     

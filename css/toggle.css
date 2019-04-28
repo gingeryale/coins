@@ -21,7 +21,7 @@
 
 input[type="checkbox"] { 
 	position: absolute;
-	opacity: 1;
+	opacity: .2;
 }
 
 /* Normal Track */

@@ -16,6 +16,7 @@ function addCoin(){
     });
     /*prints after list is populated*/
     console.log(selection);
+    $('.userSelection_array').text(selection);
     // $('#show').html(selection);
     countChecked();
 }
@@ -71,23 +72,37 @@ function removeFromSelection(userSelectedCoin, selection){
   // is found to exist
     //if($.inArray(userSelectedCoin, selection) !== -1){
       if(selection.includes(userSelectedCoin)){
-      selection.splice(selection.indexOf(userSelectedCoin), 1);
+        let gone = selection.indexOf(userSelectedCoin);
+      selection.splice(gone, 1);
       console.log(selection);
-
 
       //  rebuild the real array
       selection = [];
-      $(".del").attr("data-name","coin").each(function(){
-          selection.push($(this).data('coin'));
+      // $(".del").attr("data-name","coin").each(function(){
+      //     selection.push($(this).data('coin'));
 
-        // REMOVE CHECKED STATUS
-        //let z = document.querySelector(`[data-target=${userSelectedCoin}]`);
-        //document.querySelector(`[data-target=${userSelectedCoin}]`).setAttribute('disabled', true);
+
+          $(".del").each(function(){
+            selection.push($(this).data('coin'));
+        // DISABLE CHECKBOX STATUS
+        //let userDeletedCoin = document.querySelector(`[data-target=${userSelectedCoin}]`);
+       //let userDeletedCoin = document.querySelector(`[data-target=${userSelectedCoin}]`).setAttribute('disabled', true);
+       let userDelCoin = document.querySelector(`[data-target='${userSelectedCoin}']`);
+       userDelCoin.parentNode.classList.add('goneGirl');
+       $('.goneGirl').click(function(){
+         $(this).removeClass('goneGirl');
+       })
+
+       console.log(userDelCoin);
+        // $(`[data-target=${userSelectedCoin}]`).click(function(){
+        //     $(this).setAttribute('disabled', true);
+        // });
       });
       console.log("again");
       console.log(selection);
       // hit the save button and have appear
-      $('userSelection_array').text(selection);
+      // LOOP
+      $('.userSelection_array').text(selection);
     } 
     
       
@@ -98,7 +113,6 @@ function removeFromSelection(userSelectedCoin, selection){
 // disable checkboxes that go beyond 5 selections
 function countChecked() {                             
   var n = $("input:checked").length;                       
-  //alert(n);                          
   if (n > 5)                                              
   {                                                        
      $(':checkbox:not(:checked)').prop('disabled', true);  

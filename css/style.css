@@ -1,14 +1,36 @@
+.navbar-expand-sm{
+	position: fixed;
+top: 55px;
+background-color: #dfdfdf;
+width: 100vw;
+z-index:10;
+left:0;
+padding-right:2rem;
+}
+
+
+.card{
+	background-color: rgba(255,255,255,.8);
+}
 .cryptoniteLogo{
 	border-bottom:1px solid #333311;
+	position: fixed;
+	width:100vw;
+	background-color: #dfdfdf;
+	z-index:10;
+left:0;
+
 }
 
 #loadingDiv{
 	height:75vh;
 	width:auto;
-	position: relative;
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index:99;
+	width:100%;
 }
 
 .active{
@@ -16,5 +38,52 @@
 	color: #0064b4;
 }
 body{
-	background:#313131;
+	background:#dfdfdf;
+}
+img.jttm{
+	position: fixed;
+	z-index: -1;
+	-webkit-filter: invert(.8);
+	filter: invert(.8);
+	opacity:.5;
+}
+
+
+.jttm {
+	background-image: url("../img/bg.jpg");
+	min-height: 90vh; 
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+.jttm h1{
+	font-size: 6.75rem;
+	color:white;
+	font-weight: bold;
+}
+  .jttm p{
+	display: block;
+	font-style: italic;
+	font-size: 18px;
+	color: white;
+	top: -14px;
+	position: relative;
+	left: 9px;
+  }
+
+  .page-footer {
+    background-color: #b6b6b6;
+}
+
+.userSelection_section {
+	height: 5rem;
+	padding-left:1rem;
+}
+
+.goneGirl{
+	background-color: aquamarine;
 }
