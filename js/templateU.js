@@ -83,6 +83,7 @@ function removeFromSelection(userSelectedCoin, selection){
 
 
           $(".del").each(function(){
+            degugger;
             selection.push($(this).data('coin'));
         // DISABLE CHECKBOX STATUS
         //let userDeletedCoin = document.querySelector(`[data-target=${userSelectedCoin}]`);
