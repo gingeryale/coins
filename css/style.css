@@ -88,6 +88,16 @@ img.jttm{
 .goneGirl{
 	background-color: aquamarine;
 }
+.goneGirl::after{
+	content: "REMOVED";
+    position: absolute;
+    width: 76px;
+    height: 28px;
+    top: 10px;
+    left: -60px;
+    color: black;
+    border: 1px solid black;
+}
 
 #table{
 	display: flex;

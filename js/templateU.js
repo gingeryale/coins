@@ -51,12 +51,13 @@ function deleteOnefromModal(selection){
 
 
 // rebuild reports array and remove deleted item from DOM
+
 function removeFromSelection(userSelectedCoin, selection){
   console.log("here is current array of selections:");
   console.log(selection);
   // is found to exist
     //if($.inArray(userSelectedCoin, selection) !== -1){
-      if(selection.includes(userSelectedCoin)){
+      if(selection.includes(userSelectedCoin.toString())){
       selection.splice(selection.indexOf(userSelectedCoin), 1);
       console.log(selection);
 
@@ -65,7 +66,7 @@ function removeFromSelection(userSelectedCoin, selection){
       //  turn nodeList into Array
       const nodelistToArray = Array.apply(null, articles);
           //$(".del").each(function(){
-            /////////////////////////////////LOOP OVER BTN////////////////////////////////////
+            //LOOP OVER REMIANING DELETE BTNS THE USER DIDN'T DELETE AND WANTS TO KEEP//
             selection=[];
             nodelistToArray.forEach(delBtns => {
               selection.push(delBtns.dataset.coin);
