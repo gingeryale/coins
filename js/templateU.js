@@ -50,7 +50,7 @@ function deleteOnefromModal(selection){
 
 
 
-// rebuild reports array
+// rebuild reports array and remove deleted item from DOM
 function removeFromSelection(userSelectedCoin, selection){
   console.log("here is current array of selections:");
   console.log(selection);
@@ -60,33 +60,33 @@ function removeFromSelection(userSelectedCoin, selection){
       selection.splice(selection.indexOf(userSelectedCoin), 1);
       console.log(selection);
 
-      //  empty temporary array and rebuild the actual array 
-      selection2 = [];
+      //  rebuild the actual array 
       let articles = document.querySelectorAll('.del');
-      //  turn nodeList into Arry
+      //  turn nodeList into Array
       const nodelistToArray = Array.apply(null, articles);
-          $(".del").each(function(){
+          //$(".del").each(function(){
             /////////////////////////////////LOOP OVER BTN////////////////////////////////////
-            //let btnDEL = article.dataset.coin
-            nodelistToArray.forEach(ccc => {
-              selection2.push(ccc.dataset.coin);
+            selection=[];
+            nodelistToArray.forEach(delBtns => {
+              selection.push(delBtns.dataset.coin);
             });
+            let userDelCoin = document.querySelector(`[data-target='${userSelectedCoin}']`);
+              userDelCoin.parentNode.classList.add('goneGirl');
+              $('.goneGirl').click(function(){
+                $(this).removeClass('goneGirl');
+              });
             //console.log("this is this: " + btnDEL);
             //selection.push(btnDEL);
             //selection.push($(this).data('coin'));
         // Show user which stock she unselected
-       let userDelCoin = document.querySelector(`[data-target='${userSelectedCoin}']`);
-       userDelCoin.parentNode.classList.add('goneGirl');
-       $('.goneGirl').click(function(){
-         $(this).removeClass('goneGirl');
-       })
+      
 
        console.log(userDelCoin);
-      });
+      //});
       console.log("again");
-      console.log(selection2);
+      console.log(selection);
       // hit the save button and have appear
-      $('.userSelection_array').text(selection2);
+      $('.userSelection_array').text(selection);
     } 
 }
 
