@@ -15,8 +15,10 @@ function addCoin(){
       }  
     });
     /*prints after list is populated*/
+    console.log("first selecter array:");
     console.log(selection);
-    $('.userSelection_array').text(selection);
+    // too early to be showing user selection
+    //$('.userSelection_array').text(selection);
     // $('#show').html(selection);
     countChecked();
 }
@@ -42,52 +44,37 @@ function deleteOnefromModal(selection){
    
     $(this).closest('li').remove();
     removeFromSelection(userSelectedCoin, selection);
-    //$('input:checkbox[id=userSelectedCoin]').attr('checked', false);
-    // if user chose a coin included in first 5 selected - loop over all that are checked for new Array
-
-    //$("input[data-name=userSelectedCoin]").attr('checked', false);
   });
-  //document.getElementById("checkbox").checked = false;
-  //$("input[value=userSelectedCoin]").checked = false;
-
- //reverseSelected(userSelectedCoin, selection);
-
 }
 
-
-function reverseSelected(userSelectedCoin, selection){
-  console.log("rs");
-  //$(":checkbox[value=userSelectedCoin]").attr("checked","true")?$(":checkbox[value=userSelectedCoin]").attr("checked","false"): "";
- // ($('input:checkbox[id=userSelectedCoin]').prop("checked") == true) ? ($('input:checkbox[id=userSelectedCoin]').prop("checked") == false) : "huh?";
-  console.log(selection);
-
-}
 
 
 
 // rebuild reports array
 function removeFromSelection(userSelectedCoin, selection){
-  console.log("here is selection:");
+  console.log("here is current array of selections:");
   console.log(selection);
   // is found to exist
     //if($.inArray(userSelectedCoin, selection) !== -1){
       if(selection.includes(userSelectedCoin)){
-        let gone = selection.indexOf(userSelectedCoin);
-      selection.splice(gone, 1);
+      selection.splice(selection.indexOf(userSelectedCoin), 1);
       console.log(selection);
 
-      //  rebuild the real array
-      selection = [];
-      // $(".del").attr("data-name","coin").each(function(){
-      //     selection.push($(this).data('coin'));
-
-
+      //  empty temporary array and rebuild the actual array 
+      selection2 = [];
+      let articles = document.querySelectorAll('.del');
+      //  turn nodeList into Arry
+      const nodelistToArray = Array.apply(null, articles);
           $(".del").each(function(){
-            degugger;
-            selection.push($(this).data('coin'));
-        // DISABLE CHECKBOX STATUS
-        //let userDeletedCoin = document.querySelector(`[data-target=${userSelectedCoin}]`);
-       //let userDeletedCoin = document.querySelector(`[data-target=${userSelectedCoin}]`).setAttribute('disabled', true);
+            /////////////////////////////////LOOP OVER BTN////////////////////////////////////
+            //let btnDEL = article.dataset.coin
+            nodelistToArray.forEach(ccc => {
+              selection2.push(ccc.dataset.coin);
+            });
+            //console.log("this is this: " + btnDEL);
+            //selection.push(btnDEL);
+            //selection.push($(this).data('coin'));
+        // Show user which stock she unselected
        let userDelCoin = document.querySelector(`[data-target='${userSelectedCoin}']`);
        userDelCoin.parentNode.classList.add('goneGirl');
        $('.goneGirl').click(function(){
@@ -95,19 +82,12 @@ function removeFromSelection(userSelectedCoin, selection){
        })
 
        console.log(userDelCoin);
-        // $(`[data-target=${userSelectedCoin}]`).click(function(){
-        //     $(this).setAttribute('disabled', true);
-        // });
       });
       console.log("again");
-      console.log(selection);
+      console.log(selection2);
       // hit the save button and have appear
-      // LOOP
-      $('.userSelection_array').text(selection);
+      $('.userSelection_array').text(selection2);
     } 
-    
-      
- 
 }
 
 
@@ -115,12 +95,8 @@ function removeFromSelection(userSelectedCoin, selection){
 function countChecked() {                             
   var n = $("input:checked").length;                       
   if (n > 5)                                              
-  {                                                        
-     $(':checkbox:not(:checked)').prop('disabled', true);  
-  }                                                        
+  {  $(':checkbox:not(:checked)').prop('disabled', true);  }                                                        
   else                                                     
-  {                                                        
-     $(':checkbox:not(:checked)').prop('disabled', false); 
-  }                                                        
+  { $(':checkbox:not(:checked)').prop('disabled', false); }                                                        
 }                                                                                              
 $(":checkbox").click(countChecked);                        

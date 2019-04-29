@@ -88,3 +88,8 @@ img.jttm{
 .goneGirl{
 	background-color: aquamarine;
 }
+
+#table{
+	display: flex;
+	justify-content: center;
+}
