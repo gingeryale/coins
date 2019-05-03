@@ -11,15 +11,12 @@ function addCoin(){
         selection.push(this.id);
       }else{
         arrayRunner();
-        deleteOnefromModal(selection);
       }  
     });
     /*prints after list is populated*/
-    console.log("first selecter array:");
+    console.log("Initial selecter array:");
     console.log(selection);
-    // too early to be showing user selection
-    //$('.userSelection_array').text(selection);
-    // $('#show').html(selection);
+    
     countChecked();
     $('.userSelection_array').text(selection);
 }
@@ -31,34 +28,45 @@ function arrayRunner(){
 // Display coins of checkboxes on page
   $("input[name='coins']:checked").each(function () {
     //console.log($(this).val());
-    let arr = `<li><span class="selectListDel">${$(this).val()}</span><button data-coin="${$(this).val()}" class="del btn btn-secondary">Remove</button></li>`
+    let arr = `<li>
+      <span class="selectListDel">${$(this).val()}</span>
+      <button data-coin="${$(this).val()}" class="del btn btn-secondary">Remove</button>
+    </li>`
        $("#arrayResults").append(arr);
        console.log(arr);
 });
+deletefromModal(selection);
+
 }
 
 // let user remove from the list of selected coins
-function deleteOnefromModal(selection){
+function deletefromModal(selection){
   $(".del").attr("data-name","coin").click(function(){
     let userSelectedCoin = $(this).data('coin');
 
     console.log("user removed the following coin:");
     console.log(userSelectedCoin);
-   // remove from Modal UI
+
+   // delete coin in UI Modal
     $(this).closest('li').remove();
     removeFromSelection(userSelectedCoin, selection);
 
-    // set checkbox to unchecked 
-    //document.getElementById(`[data-target='${userSelectedCoin}']`).checked = false;
+    // set DOM checkbox status to unchecked 
     $(`[data-target='${userSelectedCoin}']`).prop("checked", false);
 
-    // remove from selection array
+    // delete from selection array
+    if(selection.includes(userSelectedCoin.toString()))
+    { 
+      selection.splice(selection.indexOf(userSelectedCoin), 1);
+      console.log("after splice");
+      console.log(selection);
+    }
 
     // add all existing values to the selection array
     let articles = document.querySelectorAll('.del');
     const nodelistToArray = Array.apply(null, articles);
-    nodelistToArray.forEach(delBtns => {
-      selection.push(delBtns.dataset.coin);
+    nodelistToArray.forEach(x => {
+      selection.push(x.dataset.coin);
     });
     
     // reduce Array
@@ -67,65 +75,30 @@ function deleteOnefromModal(selection){
       if (accumulator.indexOf(currentValue) === -1) {
         accumulator.push(currentValue);
       }
-      return accumulator
+      return accumulator;
     }, []);
-    console.log("here is CLEAN ARRAY");
+    console.log("after REDUCE:");
     console.log(reducedArray);
-  });
-}
+
+    sessionStorage.setItem('selection', reducedArray);
+      // take whatever's left in modal
+      $('.userSelection_array').text(reducedArray);
+  
+});
 
 
 
 
-// rebuild reports array and remove deleted item from DOM
-
-function removeFromSelection(userSelectedCoin, selection){
-  console.log("here is current array of selections:");
-  console.log(selection);
-  // is found to exist
-    //if($.inArray(userSelectedCoin, selection) !== -1){
-
-
-
-      // if(selection.includes(userSelectedCoin.toString())){
-      // selection.splice(selection.indexOf(userSelectedCoin), 1);
-      // console.log(selection);
-
-
-
-      //  rebuild the actual array 
-      
-      //  turn nodeList into Array
-      
-          //$(".del").each(function(){
-            //LOOP OVER REMIANING DELETE BTNS THE USER DIDN'T DELETE AND WANTS TO KEEP//
-            // REBUILD ARRAY FROM START WITH EMPTY ARRAY
-           
-
-            // UI indication of removed element
-            let userDelCoin = document.querySelector(`[data-target='${userSelectedCoin}']`);
-            // UI if user adds back to list
-              userDelCoin.parentNode.classList.add('goneGirl');
+// UI remove CSS
+function removeFromSelection(userSelectedCoin){
+        let userDeltedCoin = document.querySelector(`[data-target='${userSelectedCoin}']`);
+            // UI allow user to add back
+            userDeltedCoin.parentNode.classList.add('goneGirl');
               $('.goneGirl').click(function(){
                 $(this).removeClass('goneGirl');
               });
-           
-      
-
-       console.log(userDelCoin);
-      //});
-      console.log("again");
-      console.log(selection);
-
-
-      
-
-
-
-      sessionStorage.setItem('selection', selection);
-      // take whatever's left in modal
-      $('.userSelection_array').text(selection);
     } 
+  }
 
 
 
@@ -143,5 +116,5 @@ $(":checkbox").click(countChecked);
 
 
 $('.liveReports').on('click', function(){
-  sessionStorage.setItem('selection', selection);
+  sessionStorage.setItem('selection', reducedArray);
 });
