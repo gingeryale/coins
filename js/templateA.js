@@ -111,3 +111,6 @@ var selection = [];
     // }
     
 
+$('#nuke').click(function(){
+  sessionStorage.clear();
+})

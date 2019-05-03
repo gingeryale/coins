@@ -1,15 +1,20 @@
 // $.getScript('js/templateF.js');
 
 
-var boxer = "input[name='coins']:checked";
 // build interim array
 function addCoin(){
+  var boxer = "input[name='coins']:checked";
+
     // start with empty array
     var selection = [];
     $('#table').find(boxer).each(function () {
       if(selection.length < 5){
         selection.push(this.id);
+        let storeChecked = this.id;
+        //sessionStorage.setItem('checkboxes', selection);
+        sessionStorage.setItem(storeChecked, true);
       }else{
+        sessionStorage.clear();
         arrayRunner();
       }  
     });
@@ -35,8 +40,7 @@ function arrayRunner(){
        $("#arrayResults").append(arr);
        console.log(arr);
 });
-deletefromModal(selection);
-
+      deletefromModal(selection);
 }
 
 // let user remove from the list of selected coins
@@ -49,10 +53,15 @@ function deletefromModal(selection){
 
    // delete coin in UI Modal
     $(this).closest('li').remove();
-    removeFromSelection(userSelectedCoin, selection);
+    
+    // delete from selection array
 
     // set DOM checkbox status to unchecked 
     $(`[data-target='${userSelectedCoin}']`).prop("checked", false);
+
+    // delete from session storage
+    sessionStorage.removeItem(userSelectedCoin, true);
+
 
     // delete from selection array
     if(selection.includes(userSelectedCoin.toString()))
@@ -84,6 +93,8 @@ function deletefromModal(selection){
       // take whatever's left in modal
       $('.userSelection_array').text(reducedArray);
   
+      // make UI changes function
+      removeFromSelection(userSelectedCoin);
 });
 
 

@@ -37,13 +37,11 @@ $('document').ready(function () {
       });
 
       $('.searchBtn').on('click', function () { 
-        $('#table').empty();    
-        if($('.inputField').val()==" "){
-          alert("search field can't be empty");
-          $.getScript('js/templateA.js');
-      }    else{
+      //   if($('.inputField').val()==" "){
+      //     alert("search field can't be empty");
+      // }    else{
         $.getScript('js/templateF.js');
-      }
+      // }
       });
 
 
