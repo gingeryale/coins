@@ -1,20 +1,28 @@
-// $.getScript('js/templateU.js');
+$.getScript('js/templateU.js');
 var searchData;
-var idx = $('.inputField').val();
+var idx = $('.inputField').val().toLowerCase();
+$('#loadingDiv').load('index-1.html#loadingDiv');
+$('#liveReports').load('index-1.html#liveReports');
 $('#loadingDiv').show();
 var url = "https://api.coingecko.com/api/v3/coins/"+idx;
 var url2 = "https://api.coingecko.com/api/v3/coins/";
+
+$('#liveReports').on('click', function(){
+  var selection = sessionStorage.getItem('selection');
+  console.log(selection);
+});
 
 var $promise = $.ajax({
     url: url2,
     dataType: 'json',
     type: 'GET',
     data: searchData,
+    
     success: function (response, status) {
         var obj = JSON.parse(JSON.stringify(response));
         $('#loadingDiv').hide();
 
-        //debugger;
+        // debugger;
         $.each(obj, function(i, e) {
             var q = obj.filter(el => {
                 return el.symbol === idx;
@@ -23,16 +31,10 @@ var $promise = $.ajax({
             //console.log("this is query: " + q[i].name + " here is i=> "+i.name);
             if(q.length !== 0){
               list=
-              `<li class="card col-3 list-inline-item mt-1">
+              `<li class="card list-inline-item mt-1 centralSearch">
               <div class="card-body">
               <h5 class="card-title" id="letters">${q[i].symbol}</h5>
-              <span>
-               <div class="col-sm-5 togglerBtn">
-                <button type="button" class="btn btn-xs btn-primary btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
-                  <div class="handle"></div>
-                </button>
-              </div>
-            </span>
+              
           
             <p class="card-text">${q[i].name}</p>
           
@@ -51,9 +53,12 @@ var $promise = $.ajax({
           </div>
           </li>`;
           $("#table").empty().append(list);
+          $('.userSelection_array').text(selection);
+
           $('.inputField').val("");
             } else {
               $("#table").empty().html('<h3>Error: Could not find coin with the given id.</h3>');
+              console.log(Error);
             }
         });
     },

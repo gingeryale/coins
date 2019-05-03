@@ -86,20 +86,47 @@ img.jttm{
 }
 
 .goneGirl{
-	background-color: aquamarine;
+	background-color: rgb(161, 161, 161);
 }
 .goneGirl::after{
-	content: "REMOVED";
-    position: absolute;
-    width: 76px;
-    height: 28px;
-    top: 10px;
-    left: -60px;
-    color: black;
-    border: 1px solid black;
+content: "REMOVED";
+position: absolute;
+width: 89px;
+height: 48px;
+top: 0px;
+left: 16px;
+color: black;
+border: 1px solid black;
+line-height: 3;
+text-align: center;
+color:red;
+font-weight: bold;
 }
 
 #table{
 	display: flex;
 	justify-content: center;
+}
+.modal-body{
+	padding-left: 3rem;
+}
+.modal-body > li{
+	line-height: 1.8;
+	list-style-type:decimal;
+}
+.modal-body > li span{
+	width:75px;
+}
+.selectListDel{
+	margin:.5rem;
+	display: inline-flex;
+}
+.del{
+	margin-top:1px;
+	line-height: 1;
+}
+.centralSearch{
+	display: flex;
+	justify-content: center;
+	min-width: 300px;
 }

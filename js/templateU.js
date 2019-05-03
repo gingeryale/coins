@@ -21,6 +21,7 @@ function addCoin(){
     //$('.userSelection_array').text(selection);
     // $('#show').html(selection);
     countChecked();
+    $('.userSelection_array').text(selection);
 }
 
 // display all checkboxes selected in modal
@@ -30,7 +31,7 @@ function arrayRunner(){
 
   $("input[name='coins']:checked").each(function () {
     //console.log($(this).val());
-    let arr = `<li>${$(this).val()}<button data-coin="${$(this).val()}" class="del">x</button></li>`
+    let arr = `<li><span class="selectListDel">${$(this).val()}</span><button data-coin="${$(this).val()}" class="del btn btn-secondary">Remove</button></li>`
        $("#arrayResults").append(arr);
        console.log(arr);
 });
@@ -67,6 +68,7 @@ function removeFromSelection(userSelectedCoin, selection){
       const nodelistToArray = Array.apply(null, articles);
           //$(".del").each(function(){
             //LOOP OVER REMIANING DELETE BTNS THE USER DIDN'T DELETE AND WANTS TO KEEP//
+            // REBUILD ARRAY FROM START WITH EMPTY ARRAY
             selection=[];
             nodelistToArray.forEach(delBtns => {
               selection.push(delBtns.dataset.coin);
@@ -76,16 +78,14 @@ function removeFromSelection(userSelectedCoin, selection){
               $('.goneGirl').click(function(){
                 $(this).removeClass('goneGirl');
               });
-            //console.log("this is this: " + btnDEL);
-            //selection.push(btnDEL);
-            //selection.push($(this).data('coin'));
-        // Show user which stock she unselected
+           
       
 
        console.log(userDelCoin);
       //});
       console.log("again");
       console.log(selection);
+      sessionStorage.setItem('selection', selection);
       // hit the save button and have appear
       $('.userSelection_array').text(selection);
     } 
@@ -101,3 +101,10 @@ function countChecked() {
   { $(':checkbox:not(:checked)').prop('disabled', false); }                                                        
 }                                                                                              
 $(":checkbox").click(countChecked);                        
+
+
+
+
+$('.liveReports').on('click', function(){
+  sessionStorage.setItem('selection', selection);
+});
