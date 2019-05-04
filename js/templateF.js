@@ -3,20 +3,14 @@ var searchData;
 var idx = $('.inputField').val().toLowerCase();
 console.log(idx);
 
-// $('#loadingDiv').load('index-1.html#loadingDiv');
-// $('#liveReports').load('index-1.html#liveReports');
 $('#loadingDiv').show();
 var url = "https://api.coingecko.com/api/v3/coins/"+idx;
 var url2 = "https://api.coingecko.com/api/v3/coins/";
 
 var contents = $('.userSelection_array').toArray().map(elem => elem.innerHTML);
-
+var searchCondition = contents.findIndex(el => el==idx);
 $('.searchBtn').on('click', function () { 
-  var searchCondition = contents.findIndex(el => el==idx);
-console.log(searchCondition);
-console.log(idx);
-
-if(searchCondition !== -1){
+  if(searchCondition !== -1){
   console.log("found");
   ff();
   }else{
