@@ -11,7 +11,7 @@ var $promise = $.ajax({
     data: data,
     success: function (response, status) {
         var arr = JSON.parse(JSON.stringify(response));
-        arr.length=30;
+        arr.length=420;
         $('#loadingDiv').hide();
 
         $.each(arr, function(i, e) {

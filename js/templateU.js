@@ -1,31 +1,38 @@
 // $.getScript('js/templateF.js');
 
-
-var boxer = "input[name='coins']:checked";
 // build interim array
 function addCoin(){
+  var boxer = "input[name='coins']:checked";
+  var selection = [];
     // start with empty array
-    var selection = [];
     $('#table').find(boxer).each(function () {
       if(selection.length < 5){
         selection.push(this.id);
+        let storeChecked = this.id;
+        //sessionStorage.setItem('checkboxes', selection); if I want array
+        sessionStorage.setItem(storeChecked, true);
+        sessionStorage.setItem('selection', selection);
       }else{
+        sessionStorage.clear();
         arrayRunner();
       }  
     });
-    /*prints after list is populated*/
+    // prints after list is populated
     console.log("Initial selecter array:");
     console.log(selection);
     
+    // keep count and disable checkboxes
     countChecked();
+    // display selections to users
     $('.userSelection_array').text(selection);
 }
 
 // Modal display
 function arrayRunner(){
+  // empty div and show bootstrap modal
   $("#arrayResults").empty();
   $('#exampleModalCenter').modal('show');
-// Display coins of checkboxes on page
+// display checkboxes coins on page
   $("input[name='coins']:checked").each(function () {
     //console.log($(this).val());
     let arr = `<li>
@@ -35,24 +42,38 @@ function arrayRunner(){
        $("#arrayResults").append(arr);
        console.log(arr);
 });
-deletefromModal(selection);
+$( "li.selectListDel" ).each(function( index ) {
+  console.log( index + ": " + $( this ).text() );
+  debugger;
 
+  selection.push(this).val();
+});
+      deletefromModal(selection);
 }
 
 // let user remove from the list of selected coins
 function deletefromModal(selection){
   $(".del").attr("data-name","coin").click(function(){
+    var selection = [];
+    // value of coin
     let userSelectedCoin = $(this).data('coin');
+    
+    console.log(selection);
 
     console.log("user removed the following coin:");
     console.log(userSelectedCoin);
 
    // delete coin in UI Modal
     $(this).closest('li').remove();
-    removeFromSelection(userSelectedCoin, selection);
+    
+    // delete from selection array
 
     // set DOM checkbox status to unchecked 
     $(`[data-target='${userSelectedCoin}']`).prop("checked", false);
+
+    // delete from session storage
+    sessionStorage.removeItem(userSelectedCoin, true);
+
 
     // delete from selection array
     if(selection.includes(userSelectedCoin.toString()))
@@ -70,7 +91,6 @@ function deletefromModal(selection){
     });
     
     // reduce Array
-    // var rawArr = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
     var reducedArray = selection.reduce(function (accumulator, currentValue) {
       if (accumulator.indexOf(currentValue) === -1) {
         accumulator.push(currentValue);
@@ -84,6 +104,8 @@ function deletefromModal(selection){
       // take whatever's left in modal
       $('.userSelection_array').text(reducedArray);
   
+      // make UI changes function
+      removeFromSelection(userSelectedCoin);
 });
 
 
@@ -102,7 +124,8 @@ function removeFromSelection(userSelectedCoin){
 
 
 
-// disable checkboxes that go beyond 5 selections
+
+// count and disable checkboxes after 5
 function countChecked() {                             
   var n = $("input:checked").length;                       
   if (n > 5)                                              
@@ -118,3 +141,7 @@ $(":checkbox").click(countChecked);
 $('.liveReports').on('click', function(){
   sessionStorage.setItem('selection', reducedArray);
 });
+
+
+
+

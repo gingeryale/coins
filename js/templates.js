@@ -22,11 +22,12 @@ $('document').ready(function () {
       $.getScript('js/templateA.js');
     });
 
-    $('.reports').on('click', function () { 
+    $('.liveReports').on('click', function () { 
         $('.home').removeClass('active');
         $('.about').removeClass('active');
-        $.getScript('js/templateB.js');
         $('.reports').addClass('active');
+        $('#chartContainer').addClass('showChartContainer');
+        $.getScript('js/templateR.js');
       });
 
       $('.about').on('click', function () { 
@@ -37,10 +38,8 @@ $('document').ready(function () {
       });
 
       $('.searchBtn').on('click', function () { 
-        $('#table').empty();    
-        if($('.inputField').val()==" "){
+        if($('.inputField').val().length === 0 ){
           alert("search field can't be empty");
-          $.getScript('js/templateA.js');
       }    else{
         $.getScript('js/templateF.js');
       }
