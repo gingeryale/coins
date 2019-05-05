@@ -1,4 +1,4 @@
-$.getScript('js/templateU.js');
+//$.getScript('js/templateU.js');
 var data;
 var url = 'https://api.coingecko.com/api/v3/coins/list';
 $('#loadingDiv').show();
@@ -11,7 +11,7 @@ var $promise = $.ajax({
     data: data,
     success: function (response, status) {
         var arr = JSON.parse(JSON.stringify(response));
-        arr.length=420;
+        arr.length=48;
         $('#loadingDiv').hide();
 
         $.each(arr, function(i, e) {
@@ -88,34 +88,5 @@ function seeMore(idx) {
       
        
 var selection = [];
-// function checkedBox(){
-//   $('input[type="checkbox"]').change(function() {
-//     let $box=$(this);
-//     if ($box.is(":checked")){
-//           console.log("The element with id " + this.value + " changed.");
-//           selection.push(this.value);
-//     }
-//     console.log(selection);
-// });
-// }
 
-   
-    //     function checkedBox() {
-    //       let chb = document.getElementsByClassName('input[type="checkbox"]');
-    //       for(let i=0; i<chb.length;i++){
-    //         if(chb.checked){
-    //         console.log(this)
-    //         }
-    //   }
-    // }
-
-
-    // sessionStorage.boxes = [];
-    // let boxes = document.getElementsByTagName('input[type="checkbox"]');// array of elements
-    // for(let i=0; i<boxes.length;i++){
-		// 	if(boxes.checked){
-		// 	boxes.push(this);
-		// 	}
-    // }
-    
 

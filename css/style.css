@@ -100,13 +100,14 @@ content: "REMOVED";
 position: absolute;
 width: 99px;
 height: 48px;
-top:50px;
+top: 40px;
+transform: rotate(-14deg);
 left: 16px;
 color: black;
-border: 1px solid black;
+border: 1px dotted #0e268491;
 line-height: 3;
 text-align: center;
-color:red;
+color:#0e2684;
 font-weight: bold;
 }
 
