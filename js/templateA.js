@@ -76,11 +76,12 @@ function seeMore(idx) {
                  // place into local storage
             });
              // refresh div every 2 minutes THIS select this one
-             var $container = $(".toggler");
+             var $container = $(".toggler[data-id=idx]");
              setInterval(function()
          {
              $container.load(url2);
-         }, 5000);
+             console.log("refresh");
+         }, 120000);
          };
         
 
