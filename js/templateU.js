@@ -1,7 +1,8 @@
 // $.getScript('js/templateF.js');
-
-// build interim array
+$('.userSelection_section').hide();
+// build initial array
 function addCoin(){
+  $('.userSelection_section').show();
   var boxer = "input[name='coins']:checked";
   var selection = [];
     // start with empty array
@@ -138,9 +139,9 @@ $(":checkbox").click(countChecked);
 
 
 
-$('.liveReports').on('click', function(){
-  sessionStorage.setItem('selection', reducedArray);
-});
+// $('.liveReports').on('click', function(){
+//   sessionStorage.setItem('selection', reducedArray);
+// });
 
 
 
