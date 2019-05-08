@@ -13,7 +13,9 @@ $('document').ready(function () {
         success: function() {}
       });
 
-    
+      $('.showAboutContainer').hide();
+      $('#chartContainer').hide();
+  
     $('.home, .cryptoniteLogo').on('click', function () {     
         $('.reports').removeClass('active');
         $('.about').removeClass('active');  
@@ -23,6 +25,7 @@ $('document').ready(function () {
     });
 
     $('.liveReports').on('click', function () { 
+      $('#chartContainer').show();
         $('.home').removeClass('active');
         $('.about').removeClass('active');
         $('.reports').addClass('active');
@@ -31,9 +34,12 @@ $('document').ready(function () {
       });
 
       $('.about').on('click', function () { 
+        $('#chartContainer').hide();
+        $('#table').hide(); 
+        $('.showAboutContainer').show();
         $('.home').removeClass('active');
         $('.reports').removeClass('active');     
-        $.getScript('js/templateC.js');
+        $.getScript('js/templateL.js');
         $('.about').addClass('active');
       });
 
