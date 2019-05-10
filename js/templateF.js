@@ -18,7 +18,6 @@ $('.searchBtn').on('click', function () {
   };
 });
 
-
  var ff = function(){
   var $promise = $.ajax({
   url: url2,
