@@ -10,11 +10,11 @@ $('document').ready(function () {
         },
         success: function() {}
       });
-      // initial load hide sections
+
       $('.showAboutContainer').hide();
       $('#chartContainer').hide();
       $('.userSelection_section').hide();
-      $('#searchResult').hide();
+      $('#chartContainer').hide();
 
 
 
@@ -23,7 +23,8 @@ $('document').ready(function () {
         $('.reports').removeClass('active');
         $('.about').removeClass('active');  
         $('.home').addClass('active'); 
-        $('#table').empty();  
+        $('#table').show();  
+        $('.showAboutContainer').hide();
       $.getScript('js/templateA.js');
     });
 // BROKEN section live reports 
@@ -33,8 +34,8 @@ $('document').ready(function () {
         $('.about').removeClass('active');
         $('.reports').addClass('active');
         $('#chartContainer').addClass('showChartContainer');
-        $('#searchResult').show();
-
+        $('#chartContainer').show();
+        $('.showAboutContainer').hide();
         $.getScript('js/templateR.js');
       });
 // section about

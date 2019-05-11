@@ -12,8 +12,8 @@ var lastFinalEnd = `
     <li>AJAX</li> 
     <li>HTML, CSS/Bootstrap<li>
     </ul>
-    <b>Personal Details:</b> I'm a fullstack student at JBH.
-    I live in Rehovot get around by train, mostly.<br />
+    <b>Personal Details:</b> Learing fullstack development at JBH.
+    I live in Rehovot and take the train into Tel Aviv.<br />
     </p>
 `;
 
