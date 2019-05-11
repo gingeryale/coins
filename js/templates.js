@@ -10,10 +10,12 @@ $('document').ready(function () {
         },
         success: function() {}
       });
-
+      // initial load hide sections
       $('.showAboutContainer').hide();
       $('#chartContainer').hide();
       $('.userSelection_section').hide();
+      $('#searchResult').hide();
+
 
 
 // Ssection coin displays  
@@ -31,6 +33,8 @@ $('document').ready(function () {
         $('.about').removeClass('active');
         $('.reports').addClass('active');
         $('#chartContainer').addClass('showChartContainer');
+        $('#searchResult').show();
+
         $.getScript('js/templateR.js');
       });
 // section about

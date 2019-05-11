@@ -20,7 +20,7 @@ console.log(selectionReport);
 
 var urls = "https://min-api.cryptocompare.com/data/pricemulti?fsyms="+storedNames+"&tsyms=USD";
 //var urls = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,888,ETH&tsyms=USD";
-
+console.log(urls);
 var $promise = $.ajax({
 	url: urls,
 	dataType: 'json',
@@ -28,9 +28,11 @@ var $promise = $.ajax({
 	data: data,
 	success: function (response, status) {
 		//var arr = JSON.parse(JSON.stringify(response));
+		//debugger;
 		var arr = JSON.stringify(response);
 		console.log(arr);
-		$.each(JSON.parse(arr), function(i, e) {
+		if(response.Response !== 'Error'){
+$.each(JSON.parse(arr), function(i, e) {
 			dataPoints.push({
 							type: "line",
 							xValueType: "dateTime",
@@ -96,8 +98,12 @@ function updateChart() {
 					});
 		 });
 		 chart.render();
-		 setTimeout(function(){updateChart()}, 7000);
+		 setTimeout(function(){updateChart()}, 2000);
 	});
+		} 
+		
+} else{
+	$("#searchResult").empty().html('<h3>No coin data was returned from your selection. Select a new set of coins.</h3>');
 }
 	},
 	error: function (XMLHttpRequest, textStatus, errorThrown) {
