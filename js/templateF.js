@@ -84,6 +84,3 @@ $('.searchBtn').on('click', function () {
 });
 
 }
-function addCoin(){
-  console.log("clicked");
-}
