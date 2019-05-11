@@ -1,15 +1,15 @@
-// $.getScript('js/templateF.js');
-$('.userSelection_section').hide();
 // build initial array
 function addCoin(){
   $('.userSelection_section').show();
   var boxer = "input[name='coins']:checked";
   var selection = [];
+
     // start with empty array
-    $('#table').find(boxer).each(function () {
+    $('.wrapper').find(boxer).each(function () {
       if(selection.length < 5){
         selection.push(this.id);
         let storeChecked = this.id;
+
         //sessionStorage.setItem('checkboxes', selection); if I want array
         sessionStorage.setItem(storeChecked, true);
         sessionStorage.setItem('selection', selection);
@@ -18,6 +18,7 @@ function addCoin(){
         arrayRunner();
       }  
     });
+
     // prints after list is populated
     console.log("Initial selecter array:");
     console.log(selection);
@@ -33,6 +34,7 @@ function arrayRunner(){
   // empty div and show bootstrap modal
   $("#arrayResults").empty();
   $('#exampleModalCenter').modal('show');
+
 // display checkboxes coins on page
   $("input[name='coins']:checked").each(function () {
     //console.log($(this).val());
@@ -45,7 +47,6 @@ function arrayRunner(){
 });
 $( "li.selectListDel" ).each(function( index ) {
   console.log( index + ": " + $( this ).text() );
-  debugger;
 
   selection.push(this).val();
 });

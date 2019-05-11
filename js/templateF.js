@@ -1,11 +1,11 @@
-//$.getScript('js/templateU.js');
+$.getScript('js/templateU.js');
 var searchData;
 var idx = $('.inputField').val().toLowerCase();
 console.log(idx);
 
 $('#loadingDiv').show();
 var url = "https://api.coingecko.com/api/v3/coins/"+idx;
-var url2 = "https://api.coingecko.com/api/v3/coins/";
+//var url2 = "https://api.coingecko.com/api/v3/coins/";
 
 var contents = $('.userSelection_array').toArray().map(elem => elem.innerHTML);
 var searchCondition = contents.findIndex(el => el==idx);
@@ -42,6 +42,11 @@ $('.searchBtn').on('click', function () {
             <div class="card-body">
             <h5 class="card-title" id="letters">${e.symbol}</h5>
             
+            <span>
+             <div class="col-sm-5 togglerBtn form">
+             <label><input onclick="addCoin()" id="${e.symbol}" data-target="${e.symbol}" type="checkbox" class="ios-switch tinyswitch" name="coins" value="${e.symbol}" /><div><div></div></div></label>
+            </div>
+          </span>
         
           <p class="card-text">${e.name}</p>
         
@@ -63,8 +68,8 @@ $('.searchBtn').on('click', function () {
         $(".showSearchResult").addClass('list-inline-item mt-1 col-md-3');
 
         //$('.userSelection_array').text(selection);
-
-        $("#searchResult").val("");
+            // empty the input field after search
+        $(".inputField").val("");
           } else {
             $("#searchResult").empty().html('<h3>Error: Could not find coin with the given id.</h3>');
             console.log(Error);
@@ -78,4 +83,7 @@ $('.searchBtn').on('click', function () {
   }
 });
 
+}
+function addCoin(){
+  console.log("clicked");
 }

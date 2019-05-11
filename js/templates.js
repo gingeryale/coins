@@ -1,5 +1,3 @@
-
-
 $('document').ready(function () {
     // todo remove this line
     $('#loadingDiv').hide();
@@ -15,7 +13,10 @@ $('document').ready(function () {
 
       $('.showAboutContainer').hide();
       $('#chartContainer').hide();
-  
+      $('.userSelection_section').hide();
+
+
+// Ssection coin displays  
     $('.home, .cryptoniteLogo').on('click', function () {     
         $('.reports').removeClass('active');
         $('.about').removeClass('active');  
@@ -23,7 +24,7 @@ $('document').ready(function () {
         $('#table').empty();  
       $.getScript('js/templateA.js');
     });
-
+// BROKEN section live reports 
     $('.liveReports').on('click', function () { 
       $('#chartContainer').show();
         $('.home').removeClass('active');
@@ -32,7 +33,7 @@ $('document').ready(function () {
         $('#chartContainer').addClass('showChartContainer');
         $.getScript('js/templateR.js');
       });
-
+// section about
       $('.about').on('click', function () { 
         $('#chartContainer').hide();
         $('#table').hide(); 
@@ -42,7 +43,7 @@ $('document').ready(function () {
         $.getScript('js/templateL.js');
         $('.about').addClass('active');
       });
-
+// SEMI-FUNCTIONAL section for searh form
       $('.searchBtn').on('click', function () { 
         if($('.inputField').val().length === 0 ){
           alert("search field can't be empty");
@@ -51,9 +52,8 @@ $('document').ready(function () {
       }
       });
 
-
+// section user selected coin
       $("input[name='coins']").click(function () { 
         $.getScript('js/templateU.js');
       });
-
   });
