@@ -13,11 +13,7 @@ var lastFinalEnd = `
     <li>HTML, CSS/Bootstrap<li>
     </ul>
     <b>Personal Details:</b> I'm a fullstack student at JBH.
-    I live in Rehovot and travel into the Merkaz by train and, 
-    at times when the trains are on strike, by bus.<br />
-    
-    Currently I work in Herzilya as a CSS/SASS layout "developer,"
-    but when I grow up I hope to be a front-end developer.
+    I live in Rehovot get around by train, mostly.<br />
     </p>
 `;
 

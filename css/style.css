@@ -138,6 +138,7 @@ font-weight: bold;
 	display: flex;
 	justify-content: center;
 	min-width: 300px;
+	border:2px dashed #007bff;
 }
 
 .showChartContainer{

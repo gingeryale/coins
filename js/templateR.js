@@ -1,9 +1,25 @@
 $.getScript('js/canvasjs.js');
 var time = new Date();
 time.setMinutes();
-var urls = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,888,abc,808,777,ETH&tsyms=USD";
 var dataPoints = [];
-var chart;
+
+var selectionReport = $('.userSelection_array').toArray().map(elem => elem.innerHTML); 
+  if(searchCondition.length > 0){
+  console.log("more than 1");
+  }else{
+    $("#searchResult").empty().html('<h3>Live Reports needs a minimum of one and maximum of 5 coins to run.</h3>');
+  };
+
+var storedNames = JSON.parse(JSON.stringify(sessionStorage.getItem("selection")));
+console.log("storedNamesstoredNamesstoredNames is here:");
+
+console.log(storedNames);
+console.log("selectionReport is here:");
+console.log(selectionReport);
+
+
+var urls = "https://min-api.cryptocompare.com/data/pricemulti?fsyms="+storedNames+"&tsyms=USD";
+//var urls = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,888,ETH&tsyms=USD";
 
 var $promise = $.ajax({
 	url: urls,
@@ -13,6 +29,7 @@ var $promise = $.ajax({
 	success: function (response, status) {
 		//var arr = JSON.parse(JSON.stringify(response));
 		var arr = JSON.stringify(response);
+		console.log(arr);
 		$.each(JSON.parse(arr), function(i, e) {
 			dataPoints.push({
 							type: "line",
@@ -67,14 +84,19 @@ console.log(dataPoints);
 		}
 
 function updateChart() {
-	$.getJSON(urls, function(data) {
-			$.each(data, function(key, value) {
-					dataPoints.push({
-					dataPoints: [ {x: key, y: value.USD} ]
+	$.getJSON(urls, function(response) {
+		//debugger;
+		var arra = JSON.parse(JSON.stringify(response));
+		console.log(arra);
+			$.each(arra, function(i, e) {
+
+				dataPoints.push({
+					x: parseInt(i[0]),
+					y: parseInt(e[1])
 					});
 		 });
 		 chart.render();
-		 setTimeout(function(){updateChart()}, 1000);
+		 setTimeout(function(){updateChart()}, 7000);
 	});
 }
 	},

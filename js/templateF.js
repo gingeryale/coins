@@ -14,13 +14,13 @@ $('.searchBtn').on('click', function () {
   console.log("found");
   ff();
   }else{
-    $("#searchResult").empty().html('<h3>Coin not selected from list above.</h3>');
+    $("#searchResult").empty().html('<h3>Error: Could not find coin with the given id.</h3>');
   };
 });
 
  var ff = function(){
   var $promise = $.ajax({
-  url: url2,
+  url: url,
   dataType: 'json',
   type: 'GET',
   data: searchData,
@@ -30,30 +30,31 @@ $('.searchBtn').on('click', function () {
       $('#loadingDiv').hide();
 
       $.each(obj, function(i, e) {
+       // debugger;
           var q = obj.filter(el => {
               return el.symbol === idx;
             });
-          //console.log("this is e: "+e.symbol + " here is i=> "+i);
-          //console.log("this is query: " + q[i].name + " here is i=> "+i.name);
+          console.log("this is eeee: "+e.symbol + " here is i=> "+ e.id);
+          console.log("this is qqq query: " + q[i].name + " here is i=> "+ q[i].symbol);
           if(q.length !== 0){
             list1=
             `<li class="card list-inline-item mt-1 centralSearch">
             <div class="card-body">
-            <h5 class="card-title" id="letters">${q[i].symbol}</h5>
+            <h5 class="card-title" id="letters">${e.symbol}</h5>
             
         
-          <p class="card-text">${q[i].name}</p>
+          <p class="card-text">${e.name}</p>
         
-          <button data-toggle="collapse" data-id="${q[i].id}" data-target="#demo" class="btn btn-primary btn-sm">See More</button>
+          <button data-toggle="collapse" data-id="${e.id}" data-target="#demo" class="btn btn-primary btn-sm">See More</button>
         
-          <div id="demo" class="collapse ${q[i].symbol}">
+          <div id="demo" class="collapse ${e.symbol}">
            
 
-          <img src="${q[i].image.thumb}" width="25px">
+          <img src="${e.image.thumb}" width="25px">
           <ul>
-          <li id="USD" class="price">$ ${q[i].market_data.current_price.usd}</li>
-          <li id="EUR" class="price">€ ${q[i].market_data.current_price.eur}</li>
-          <li id="ILS" class="price">₪ ${q[i].market_data.current_price.ils}</li>
+          <li id="USD" class="price">$ ${e.market_data.current_price.usd}</li>
+          <li id="EUR" class="price">€ ${e.market_data.current_price.eur}</li>
+          <li id="ILS" class="price">₪ ${e.market_data.current_price.ils}</li>
           </ul>
           </div>
         </div>
