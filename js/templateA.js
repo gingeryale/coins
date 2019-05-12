@@ -2,8 +2,6 @@ $.getScript('js/templateU.js');
 var data;
 var url = 'https://api.coingecko.com/api/v3/coins/list';
 $('#loadingDiv').show();
-$('.home').addClass('active');
-$('#table').show();
   
 var $promise = $.ajax({
     url: url,

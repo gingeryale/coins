@@ -1,5 +1,3 @@
-//$.getScript('js/canvasjs.js');
-$('#table').show();
 var dataPoints = [];
 
   
@@ -104,7 +102,7 @@ function lr(){
 		},
 		error: function (XMLHttpRequest, textStatus, errorThrown) {
 				console.log('AJAX error:' + textStatus);
-				$("#table").empty().html('<h3>Error: A server error occurred.</h3>');
+				$("#table").html('<h3>Error: A server error occurred.</h3>');
 		}
 	});
 }

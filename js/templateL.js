@@ -1,4 +1,3 @@
-$('#aboutContainer').empty();
 
 var lastFinalEnd = `
 <img src="../img/self.png" alt="dev portrait" />

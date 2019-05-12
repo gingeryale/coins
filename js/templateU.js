@@ -1,4 +1,4 @@
-// build initial array
+
 function addCoin(){
   $('.userSelection_section').show();
   var boxer = "input[name='coins']:checked";
@@ -137,12 +137,6 @@ function countChecked() {
 }                                                                                              
 $(":checkbox").click(countChecked);                        
 
-
-
-
-// $('.liveReports').on('click', function(){
-//   sessionStorage.setItem('selection', reducedArray);
-// });
 
 
 
