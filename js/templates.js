@@ -15,6 +15,8 @@ $('document').ready(function () {
       $('#chartContainer').hide();
       $('.userSelection_section').hide();
       $('#chartContainer').hide();
+      $('#table').show(); 
+
 
 
 
@@ -23,20 +25,20 @@ $('document').ready(function () {
         $('.reports').removeClass('active');
         $('.about').removeClass('active');  
         $('.home').addClass('active'); 
-        $('#table').show();  
         $('.showAboutContainer').hide();
       $.getScript('js/templateA.js');
     });
+    
 // BROKEN section live reports 
     $('.liveReports').on('click', function () { 
-      $('#chartContainer').show();
         $('.home').removeClass('active');
         $('.about').removeClass('active');
-        $('.reports').addClass('active');
-        $('#chartContainer').addClass('showChartContainer');
-        $('#chartContainer').show();
+        $('.reports').addClass('active');        
         $('.showAboutContainer').hide();
         $.getScript('js/templateR.js');
+        $('#chartContainer').show();        
+        $('#table').show();
+
       });
 // section about
       $('.about').on('click', function () { 
@@ -61,4 +63,4 @@ $('document').ready(function () {
       $("input[name='coins']").click(function () { 
         $.getScript('js/templateU.js');
       });
-  });
+});

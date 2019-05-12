@@ -1,9 +1,10 @@
-//$.getScript('js/templateU.js');
+$.getScript('js/templateU.js');
 var data;
 var url = 'https://api.coingecko.com/api/v3/coins/list';
 $('#loadingDiv').show();
 $('.home').addClass('active');
-
+$('#table').show();
+  
 var $promise = $.ajax({
     url: url,
     dataType: 'json',
@@ -11,7 +12,7 @@ var $promise = $.ajax({
     data: data,
     success: function (response, status) {
         var arr = JSON.parse(JSON.stringify(response));
-        arr.length=430;
+        arr.length=30;
         $('#loadingDiv').hide();
 
         $.each(arr, function(i, e) {

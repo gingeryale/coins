@@ -1,6 +1,5 @@
-$.getScript('js/canvasjs.js');
-var time = new Date();
-time.getMinutes();
+//$.getScript('js/canvasjs.js');
+$('#table').show();
 var dataPoints = [];
 
   
@@ -10,7 +9,8 @@ console.log(storedNames);
 // var storedNames = "BTC,808,777,888,ETH";
 
 if(storedNames !== null){
-	console.log("more than 1");
+	$("#searchResult").empty();
+	// run liveReports function
 	lr();
 	}else{
 	  $("#searchResult").empty().html('<h3>Select a minimum of 5 coins to run Live Reports.</h3>');
@@ -33,13 +33,13 @@ function lr(){
 	$.each(JSON.parse(arr), function(i, e) {
 				dataPoints.push({
 								type: "line",
+								name: `${i}`,
 								xValueType: "dateTime",
-								yValueFormatString: `${e.USD}`,
-								xValueFormatString: "hh:mm TT",
+								yValueFormatString: `$ ${e.USD}`,
+								xValueFormatString: "hh:mm:ss TT",
 								showInLegend: true,
 								name: `${i}`,
-								coinVal:`${e.USD}`,
-						dataPoints: [ {x: i, y: e.USD} ]
+						dataPoints: [ {x: parseInt(i), y: parseInt(e.USD)} ]
 					});
 			});	
 			
@@ -48,10 +48,11 @@ function lr(){
 			var chart = new CanvasJS.Chart("chartContainer", {
 				animationEnabled: true,
 				title:{
-					text: "Update Live Coin Reports"
+					text: "Update Live Coin Reports - Broken"
 				},
 				axisX: {
-					valueFormatString: time.setMinutes()
+					 valueFormatString: "h-mm",
+            		 labelAngle: -50
 				},
 				axisY: {
 					title: "USD",
@@ -69,6 +70,7 @@ function lr(){
 				data: dataPoints 
 			});
 			chart.render();
+			updateChart();
 			
 			function toggleDataSeries(e){
 				if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -78,19 +80,16 @@ function lr(){
 					e.dataSeries.visible = true;
 				}
 				chart.render();	
-				updateChart();
+				
 			}
 	
 	function updateChart() {
 		$.getJSON(urls, function(response) {
-			//debugger;
 			var arra = JSON.parse(JSON.stringify(response));
 			console.log(arra);
-			//debugger;
-			//dataPoints[0].dataPoints[0].x
 				$.each(arra, function(i, e) {
 					dataPoints.push({
-						x: parseInt(i),
+						x: i,
 						y: parseInt(e)
 						});
 			 });
