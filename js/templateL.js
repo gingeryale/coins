@@ -16,4 +16,4 @@ var lastFinalEnd = `
     </p>
 `;
 
-$('#aboutContainer').append(lastFinalEnd);
+$('#aboutContainer').empty().append(lastFinalEnd);
